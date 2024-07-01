@@ -343,6 +343,9 @@ def main():
     if args.mode in ['all', 'eval', 'viz']:
         summarizer_cfg = cfg.get('summarizer', {})
         if not summarizer_cfg or summarizer_cfg.get('type', None) is None:
+
+            #### add summarizer in dataset config
+            #### for dataset in dataset config, get summarizer and run
             summarizer_cfg['type'] = DefaultSummarizer
         summarizer_cfg['config'] = cfg
         summarizer = build_from_cfg(summarizer_cfg)

@@ -17,7 +17,7 @@ data_path ='data/subjective/alignment_bench'
 alignment_bench_config_path = 'data/subjective/alignment_bench/config'
 alignment_bench_config_name = 'multi-dimension'
 
-subjective_datasets = []
+alignbench_datasets = []
 
 for _name in subjective_all_sets:
     subjective_infer_cfg = dict(
@@ -50,7 +50,7 @@ for _name in subjective_all_sets:
         pred_role='BOT',
     )
 
-    subjective_datasets.append(
+    alignbench_datasets.append(
         dict(
             abbr=f'{_name}',
             type=AlignmentBenchDataset,
@@ -60,5 +60,6 @@ for _name in subjective_all_sets:
             alignment_bench_config_name=alignment_bench_config_name,
             reader_cfg=subjective_reader_cfg,
             infer_cfg=subjective_infer_cfg,
-            eval_cfg=subjective_eval_cfg
+            eval_cfg=subjective_eval_cfg,
+            mode='singlescore'
         ))

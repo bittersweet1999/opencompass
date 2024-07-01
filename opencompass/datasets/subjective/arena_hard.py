@@ -1,6 +1,6 @@
 import json
 import os.path as osp
-
+from typing import Optional
 from datasets import Dataset, DatasetDict
 
 from opencompass.registry import LOAD_DATASET
@@ -11,7 +11,9 @@ from ..base import BaseDataset
 @LOAD_DATASET.register_module()
 class ArenaHardDataset(BaseDataset):
 
-    def load(self, path: str, name: str):
+    def load(self, path: str, name: str, mode: Optional[str] = 'm2n', 
+        infer_order: Optional[str] = 'double', 
+        base_models: Optional = None):
         filename = osp.join(path, f'{name}.jsonl')
         dataset = DatasetDict()
         raw_data = []
